@@ -25,39 +25,30 @@ export class GameApp {
         parent.replaceChild(this.app.view, parent.lastElementChild); // Hack for parcel HMR
 
         // init Pixi loader
-        let loader = new PIXI.Loader();
+        const loader = new PIXI.Loader();
 
         // Add user player assets
         console.log('Player to load', playerFrames);
         Object.keys(playerFrames).forEach(key => {
             loader.add(playerFrames[key]);
         });
-
-        // Load assets
-        loader.load(this.onAssetsLoaded(width, height).bind(this));
-    }
-
-    private onAssetsLoaded(width, height) {
+        
         const bg = PIXI.Sprite.from(background);
         bg.width = width;
         bg.height = height;
         this.app.stage.addChild(bg);
-
-        const playerIdle: PIXI.AnimatedSprite = new PIXI.AnimatedSprite(playerFrames[currentFrame].map(path => PIXI.Texture.from(path)));
-
-        /*
-        * An AnimatedSprite inherits all the properties of a PIXI sprite
-        * so you can change its position, its anchor, mask it, etc
-        */
-        playerIdle.x = 100;
-        playerIdle.y = 150;
-        playerIdle['vx'] = 1;
-        playerIdle.anchor.set(0, 1);
-        // playerIdle.anchor.set(0.5);
-        playerIdle.animationSpeed = 0.3;
-        playerIdle.play();
-
-        this.app.stage.addChild(playerIdle);
+        // Load assets
+        loader.load((loader, resources) => {
+            const playerIdle: PIXI.AnimatedSprite = new PIXI.AnimatedSprite(playerFrames[currentFrame].map(path => PIXI.Texture.from(path)));
+            playerIdle.x = 100;
+            playerIdle.y = 150;
+            playerIdle['vx'] = 1;
+            playerIdle.anchor.set(0, 1);
+            // playerIdle.anchor.set(0.5);
+            playerIdle.animationSpeed = 0.3;
+            playerIdle.play();
+            this.app.stage.addChild(playerIdle);
+        });
     }
 
 }

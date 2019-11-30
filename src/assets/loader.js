@@ -4,6 +4,7 @@ import bomberBack from './images/Bomberman/Back/*.png';
 import bomberRight from './images/Bomberman/Right/*.png';
 import bomberLeft from './images/Bomberman/Left/*.png';
 import xmasBackground from './images/xmas/background.png';
+
 export const background = xmasBackground;
 export const bomberFrames = {
     front: Object.values(bomberFront),
