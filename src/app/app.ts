@@ -1,4 +1,4 @@
-import { bomberFrames } from '../assets/loader';
+import { background, bomberFrames } from '../assets/loader';
 import * as PIXI from 'pixi.js';
 
 interface BomberFrames {
@@ -34,10 +34,14 @@ export class GameApp {
         });
 
         // Load assets
-        loader.load(this.onAssetsLoaded.bind(this));
+        loader.load(this.onAssetsLoaded(width, height).bind(this));
     }
 
-    private onAssetsLoaded() {
+    private onAssetsLoaded(width, height) {
+        const bg = PIXI.Sprite.from(background);
+        bg.width = width;
+        bg.height = height;
+        this.app.stage.addChild(bg);
 
         const playerIdle: PIXI.AnimatedSprite = new PIXI.AnimatedSprite(playerFrames[currentFrame].map(path => PIXI.Texture.from(path)));
 
