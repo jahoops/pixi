@@ -12,6 +12,7 @@
   "author": "Llorenç Pujol Ferriol",
   "license": "MIT",
   "dependencies": {
+    "core-js": "^3.4.5",
     "pixi.js": "~5.2.0"
   },
   "devDependencies": {

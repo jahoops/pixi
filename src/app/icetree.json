@@ -1,0 +1,17 @@
+{
+	"meta": {
+		"image": "icetree.png",
+		"size": {"w":1230,"h":1920},
+		"scale": "1"
+	},
+	"frames": {
+		"Icet_F_f00.png":
+		{
+			"frame": {"x":0,"y":0,"w":205,"h":384},
+			"rotated": false,
+			"trimmed": false,
+			"spriteSourceSize": {"x":0,"y":0,"w":205,"h":384},
+			"sourceSize": {"w":205,"h":384}
+		}
+	}
+}
